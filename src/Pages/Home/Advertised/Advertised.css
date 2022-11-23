@@ -1,0 +1,23 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+    background-color: #ffff;
+}
+
+.swiper-slide {
+    font-size: 18px;
+    color: #fff;
+    padding: 40px 60px;
+}
+
+.parallax-bg {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 130%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
