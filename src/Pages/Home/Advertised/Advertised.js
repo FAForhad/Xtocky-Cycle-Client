@@ -4,8 +4,9 @@ import { Pagination, } from "swiper";
 import './Advertised.css'
 const Advertised = () => {
     return (
-        <div>
-            <div className=' mx-auto lg:px-40 lg:py-24'>
+        <div className='border-none'>
+            <div className=' mx-auto px-5 py-5 lg:px-40 lg:py-24'>
+                <h1 className='text-start font-bold text-xl'>MEET  <br /> <span className='text-6xl text-orange-600'>OUR BEST SELLERS</span> </h1>
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={10}

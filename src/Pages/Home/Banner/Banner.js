@@ -39,7 +39,7 @@ const Banner = () => {
                                 </div>
                                 <div className='w-full text-start px-3'>
                                     <p className='lg:text-3xl text-lg md:text-xl'>FOR BETTER RIDE</p>
-                                    <p className='lg:text-7xl text-4xl md:text-5xl my-5'>FIND YOUR <span className='text-yellow-400'>DESIRE BIKE</span> </p>
+                                    <p className='lg:text-7xl text-4xl md:text-5xl my-5'>FIND YOUR  <span className='text-yellow-400'>DESIRE CYCLE</span> </p>
                                 </div>
                             </div>
                         </div>
