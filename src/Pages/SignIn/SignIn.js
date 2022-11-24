@@ -7,7 +7,7 @@ import { Authcontext } from '../../UserContext/UserContext';
 import toast from 'react-hot-toast';
 
 const SignIn = () => {
-    const { user, googleLogin } = useContext(Authcontext)
+    const { user, googleLogin, signInUser } = useContext(Authcontext)
 
     const handleloginUser = (event) => {
         event.preventDefault()
@@ -15,6 +15,14 @@ const SignIn = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        signInUser(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                form.reset()
+                toast.success('Successfully Login')
+            })
+            .then(error => console.error(error))
     }
 
 
