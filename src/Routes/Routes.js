@@ -27,6 +27,10 @@ const Routes = () => {
                     element: <Categories></Categories>
                 },
                 {
+                    path: '/signleCategory',
+                    loader: ({ params }) => fetch(`http://localhost:5000/allcategories/${params.id}`)
+                },
+                {
                     path: '/products',
                     element: <PrivateRoute> <Products></Products></PrivateRoute>
                 },
