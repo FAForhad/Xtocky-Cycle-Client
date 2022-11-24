@@ -11,6 +11,7 @@ import Signup from '../Pages/Signup/Signup';
 import Error from './Error/Error';
 import Categories from '../Pages/Categories/Categories';
 import Products from '../Pages/Products/Products/Products';
+import PrivateRoute from './PrivateRoute';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -27,7 +28,7 @@ const Routes = () => {
                 },
                 {
                     path: '/products',
-                    element: <Products></Products>
+                    element: <PrivateRoute> <Products></Products></PrivateRoute>
                 },
                 {
                     path: '/signup',

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
-import Navber from '../Shared/Navber/Navber';
 import { FcGoogle } from "react-icons/fc";
 import { Authcontext } from '../../UserContext/UserContext';
 import toast from 'react-hot-toast';
@@ -63,7 +62,6 @@ const Signup = () => {
     return (
 
         <section class="bg-white">
-            <Navber></Navber>
             <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
                 <section
                     class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6"

@@ -1,16 +1,16 @@
 import React from 'react';
-import Button from '../../Components/Button/Button';
 import { useQuery } from '@tanstack/react-query';
-import Loadercard from '../../Components/Loadercard/Loadercard';
-import HomeCategory from '../Home/HomeCategories/HomeCategory';
+import Button from '../../../Components/Button/Button';
+import Loadercard from '../../../Components/Loadercard/Loadercard';
+import HomeCategory from './HomeCategory';
 import { Link } from 'react-router-dom';
 
-const Categories = () => {
+const HomeCategories = () => {
 
-    const { data: allCategories, isLoading } = useQuery({
-        queryKey: ['allcategories'],
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allcategories')
+            const res = await fetch('http://localhost:5000/categories')
             const data = await res.json()
             return data
         }
@@ -19,7 +19,6 @@ const Categories = () => {
     if (isLoading) {
         return <Loadercard></Loadercard>
     }
-
     return (
         <div>
             <section>
@@ -42,15 +41,14 @@ const Categories = () => {
                         <div class="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-3 lg:py-12">
 
                             {
-                                allCategories?.map(categorie => <HomeCategory key={categorie._id} categorie={categorie}></HomeCategory>)
+                                categories?.map(categorie => <HomeCategory key={categorie._id} categorie={categorie}></HomeCategory>)
                             }
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
     );
 };
 
-export default Categories;
+export default HomeCategories;

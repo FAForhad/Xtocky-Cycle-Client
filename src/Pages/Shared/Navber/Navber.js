@@ -41,16 +41,6 @@ const Navber = () => {
         </li>
         <li>
             <Link
-                to='/products'
-                aria-label="products"
-                title="products"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
-            >
-                Products
-            </Link>
-        </li>
-        <li>
-            <Link
                 to="/blogs"
                 aria-label="blogs"
                 title="blogs"
