@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
     const menu = <>
@@ -9,7 +10,7 @@ const Navber = () => {
                 title="Our product"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-                Product
+                Category
             </a>
         </li>
         <li>
@@ -19,7 +20,7 @@ const Navber = () => {
                 title="Our product"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-                Features
+                Products
             </a>
         </li>
         <li>
@@ -29,28 +30,29 @@ const Navber = () => {
                 title="Product pricing"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-                Pricing
+                Dashboard
             </a>
         </li>
+
         <li>
-            <a
-                href="/"
+            <Link
+                to="/signin"
                 aria-label="About us"
                 title="About us"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-                About us
-            </a>
+                Sign in
+            </Link>
         </li>
         <li>
-            <a
-                href="/"
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
+            <Link
+                to="/signup"
+                aria-label="About us"
+                title="About us"
+                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
                 Sign up
-            </a>
+            </Link>
         </li>
     </>
 
