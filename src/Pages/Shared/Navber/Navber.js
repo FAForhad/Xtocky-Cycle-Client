@@ -56,8 +56,6 @@ const Navber = () => {
 
 
 
-
-
     return (
         <div className='bg-transparent '>
             <div className="navbar px-10 lg:px-56">

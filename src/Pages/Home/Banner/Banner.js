@@ -9,7 +9,7 @@ const Banner = () => {
             <div >
                 <Swiper
                     style={{
-                        height: '750px',
+                        height: '850px',
                         "--swiper-navigation-color": "#fff",
                         "--swiper-pagination-color": "#fff",
                     }}
@@ -20,7 +20,7 @@ const Banner = () => {
                     }}
                     navigation={true}
                     modules={[Parallax, Pagination, Navigation]}
-                    className="mySwiper h-full"
+                    className="mySwiper h-full top-0"
                 >
                     <div
                         slot="container-start"
