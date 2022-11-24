@@ -128,6 +128,7 @@ const Signup = () => {
                                     id="FirstName"
                                     name="name"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    required
                                 />
                             </div>
 
@@ -141,6 +142,7 @@ const Signup = () => {
                                     id="Email"
                                     name="email"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    required
                                 />
                             </div>
                             <div class="col-span-6 ">
@@ -156,6 +158,7 @@ const Signup = () => {
                                     id="photo"
                                     name="photo"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    required
                                 />
                             </div>
                             <div class="col-span-6">
@@ -189,6 +192,7 @@ const Signup = () => {
                                     id="Password"
                                     name="password"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    required
                                 />
                             </div>
 

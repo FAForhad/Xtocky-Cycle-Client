@@ -1,60 +1,109 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Authcontext } from '../../../UserContext/UserContext';
+import toast from 'react-hot-toast';
+
 
 const Navber = () => {
-    const menu = <>
+
+    const { user, logout } = useContext(Authcontext);
+    console.log(user)
+
+    const handleLogOut = () => {
+        logout()
+            .then(() => {
+                toast.success('SuccessFully Logout')
+            })
+            .then(error => console.error(error))
+    }
+
+
+    const menu = <React.Fragment>
         <li>
-            <a
-                href="/"
+            <Link
+                to='/category'
                 aria-label="Our product"
                 title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
                 Category
-            </a>
+            </Link>
         </li>
         <li>
-            <a
-                href="/"
-                aria-label="Our product"
-                title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            <Link
+                to='/products'
+                aria-label="products"
+                title="products"
+                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
                 Products
-            </a>
+            </Link>
         </li>
         <li>
-            <a
-                href="/"
-                aria-label="Product pricing"
-                title="Product pricing"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            <Link
+                to="/blogs"
+                aria-label="blogs"
+                title="blogs"
+                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
-                Dashboard
-            </a>
+                Blogs
+            </Link>
         </li>
+        {user?.uid
 
-        <li>
-            <Link
-                to="/signin"
-                aria-label="About us"
-                title="About us"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-                Sign in
-            </Link>
-        </li>
-        <li>
-            <Link
-                to="/signup"
-                aria-label="About us"
-                title="About us"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-                Sign up
-            </Link>
-        </li>
-    </>
+            ?
+
+
+            <>
+                <li>
+                    <Link
+                        to="/dashboard"
+                        aria-label="dashboard"
+                        title="dashboard"
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                    >
+                        Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <button
+                        onClick={handleLogOut}
+                        title="Log Out"
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                    >
+                        Logout
+                    </button>
+                </li>
+            </>
+
+            :
+
+
+            <>
+                <li>
+                    <Link
+                        to="/signin"
+                        aria-label="signin"
+                        title="signin"
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                    >
+                        Sign in
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/signup"
+                        aria-label="signup"
+                        title="signup"
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                    >
+                        Sign up
+                    </Link>
+                </li>
+            </>
+        }
+
+    </React.Fragment>
 
 
 
