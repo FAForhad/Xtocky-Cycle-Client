@@ -1,10 +1,65 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import Navber from '../Shared/Navber/Navber';
 import { FcGoogle } from "react-icons/fc";
+import { Authcontext } from '../../UserContext/UserContext';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
+
+    const { user, register, updateUserProfile, googleLogin } = useContext(Authcontext)
+
+    const handleSingUp = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const type = form.type.value;
+        const photo = form.photo.value;
+        const password = form.password.value;
+        register(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                form.reset()
+                handleupdateUser(name, photo)
+                toast.success('Successfully Sign Up!', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                });
+            })
+            .then(error => console.error(error))
+    }
+
+    const handleupdateUser = (name, picture) => {
+        const profile = {
+            displayName: name,
+            photoURL: picture
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                toast.success('Login Successful')
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
 
         <section class="bg-white">
@@ -57,7 +112,9 @@ const Signup = () => {
                             </p>
                         </div>
 
-                        <form class="mt-8 grid grid-cols-6 gap-6">
+                        <form
+                            onSubmit={handleSingUp}
+                            class="mt-8 grid grid-cols-6 gap-6">
                             <div class="col-span-6">
                                 <label
                                     for="FirstName"
@@ -69,7 +126,7 @@ const Signup = () => {
                                 <input
                                     type="text"
                                     id="FirstName"
-                                    name="first_name"
+                                    name="name"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
                             </div>
@@ -86,15 +143,30 @@ const Signup = () => {
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
                             </div>
+                            <div class="col-span-6 ">
+                                <label
+                                    for="Photo"
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    Photo Urll
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="photo"
+                                    name="photo"
+                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                />
+                            </div>
                             <div class="col-span-6">
                                 <label for="Email" class="block text-sm font-medium text-gray-700">
                                     Type
                                 </label>
 
                                 <select
-                                    type="email"
-                                    id="Email"
-                                    name="email"
+                                    type="type"
+                                    id="type"
+                                    name="type"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
 
                                 >
@@ -103,7 +175,8 @@ const Signup = () => {
 
                                 </select>
                             </div>
-                            <div class="col-span-6 sm:col-span-3">
+
+                            <div class="col-span-6 ">
                                 <label
                                     for="Password"
                                     class="block text-sm font-medium text-gray-700"
@@ -119,21 +192,6 @@ const Signup = () => {
                                 />
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3">
-                                <label
-                                    for="PasswordConfirmation"
-                                    class="block text-sm font-medium text-gray-700"
-                                >
-                                    Password Confirmation
-                                </label>
-
-                                <input
-                                    type="password"
-                                    id="PasswordConfirmation"
-                                    name="password_confirmation"
-                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                />
-                            </div>
 
                             <div class="col-span-6">
                                 <label for="MarketingAccept" class="flex gap-4">
@@ -144,15 +202,14 @@ const Signup = () => {
                                 </label>
                             </div>
                             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                                <Button>
+
+
+                                <Button
+                                    type='submit'
+                                >
                                     <span className='text-black'>Create an account</span>
-
                                 </Button>
 
-                                <Button>
-                                    <span className='text-black'><FcGoogle></FcGoogle></span>
-
-                                </Button>
 
                                 <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                     Already have an account?
@@ -160,6 +217,10 @@ const Signup = () => {
                                 </p>
                             </div>
                         </form>
+
+                        <Button>
+                            <span onClick={handleGoogleLogin} className='text-black flex items-center gap-2 p-1'><FcGoogle></FcGoogle> SignUp With Google </span>
+                        </Button>
                     </div>
                 </main>
             </div>

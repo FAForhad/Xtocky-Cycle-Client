@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import Navber from '../Shared/Navber/Navber';
 import { FcGoogle } from "react-icons/fc";
+import { Authcontext } from '../../UserContext/UserContext';
+import toast from 'react-hot-toast';
 
 const SignIn = () => {
+    const { user, googleLogin } = useContext(Authcontext)
+
+    const handleloginUser = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+    }
+
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                toast.success('Login Successful')
+            })
+            .catch(error => console.log(error))
+    }
+
 
 
 
@@ -59,7 +82,9 @@ const SignIn = () => {
                             </p>
                         </div>
 
-                        <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+                        <form
+                            onSubmit={handleloginUser}
+                            class="mt-8 grid grid-cols-6 gap-6">
 
 
                             <div class="col-span-6">
@@ -103,21 +128,25 @@ const SignIn = () => {
                             </div>
 
                             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                                <Button>
+
+                                <Button
+                                    type='submit'
+                                >
                                     <span className='text-black'>Sign In</span>
 
                                 </Button>
 
-                                <Button>
-                                    <span className='text-black'><FcGoogle></FcGoogle></span>
-
-                                </Button>
                                 <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                     Do not have an account ?
                                     <Link to='/signup' class="text-gray-700 underline"> SignUp</Link>.
                                 </p>
                             </div>
                         </form>
+                        <Button>
+                            <div onClick={handleGoogleLogin} >
+                                <span className='text-black flex items-center gap-2 p-1'><FcGoogle></FcGoogle> SignIn With Google </span>
+                            </div>
+                        </Button>
                     </div>
                 </main>
             </div>
