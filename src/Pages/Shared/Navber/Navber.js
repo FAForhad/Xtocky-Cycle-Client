@@ -21,6 +21,16 @@ const Navber = () => {
     const menu = <React.Fragment>
         <li>
             <Link
+                to='/'
+                aria-label="Home"
+                title="Home"
+                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+            >
+                Home
+            </Link>
+        </li>
+        <li>
+            <Link
                 to='/category'
                 aria-label="Our product"
                 title="Our product"

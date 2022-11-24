@@ -4,10 +4,13 @@ import {
     RouterProvider
 } from "react-router-dom";
 import Main from '../Layouts/Main/Main';
+import Dashboard from '../Pages/Dashboard/Dashboard/Dashboard';
 import Home from '../Pages/Home/Home/Home';
 import SignIn from '../Pages/SignIn/SignIn';
 import Signup from '../Pages/Signup/Signup';
 import Error from './Error/Error';
+import Categories from '../Pages/Categories/Categories';
+import Products from '../Pages/Products/Products/Products';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -18,15 +21,27 @@ const Routes = () => {
                     path: '/',
                     element: < Home></Home>
                 },
+                {
+                    path: '/category',
+                    element: <Categories></Categories>
+                },
+                {
+                    path: '/products',
+                    element: <Products></Products>
+                },
+                {
+                    path: '/signup',
+                    element: < Signup></Signup>
+                },
+                {
+                    path: '/signin',
+                    element: < SignIn></SignIn>
+                },
             ]
         },
         {
-            path: '/signup',
-            element: < Signup></Signup>
-        },
-        {
-            path: '/signin',
-            element: < SignIn></SignIn>
+            path: '/dashboard',
+            element: <Dashboard></Dashboard>
         },
         {
             path: '*',

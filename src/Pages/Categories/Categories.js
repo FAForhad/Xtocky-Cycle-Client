@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '../../../Components/Button/Button';
+import Button from '../../Components/Button/Button';
 
-const Products = () => {
+const Categories = () => {
     return (
         <section>
             <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24">
@@ -62,7 +62,6 @@ const Products = () => {
                                 <p class="mt-1 text-sm text-gray-700">$150</p>
                             </div>
                         </a>
-                        <Button> <span className='text-black'>View All Categories</span> </Button>
                     </div>
                 </div>
             </div>
@@ -71,4 +70,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default Categories;
