@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../../Components/Button/Button';
 import Navber from '../Shared/Navber/Navber';
+import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
     return (
@@ -54,35 +57,19 @@ const Signup = () => {
                             </p>
                         </div>
 
-                        <form action="#" class="mt-8 grid grid-cols-6 gap-6">
-                            <div class="col-span-6 sm:col-span-3">
+                        <form class="mt-8 grid grid-cols-6 gap-6">
+                            <div class="col-span-6">
                                 <label
                                     for="FirstName"
                                     class="block text-sm font-medium text-gray-700"
                                 >
-                                    First Name
+                                    Name
                                 </label>
 
                                 <input
                                     type="text"
                                     id="FirstName"
                                     name="first_name"
-                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                />
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-3">
-                                <label
-                                    for="LastName"
-                                    class="block text-sm font-medium text-gray-700"
-                                >
-                                    Last Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="LastName"
-                                    name="last_name"
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
                             </div>
@@ -99,7 +86,23 @@ const Signup = () => {
                                     class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
                             </div>
+                            <div class="col-span-6">
+                                <label for="Email" class="block text-sm font-medium text-gray-700">
+                                    Type
+                                </label>
 
+                                <select
+                                    type="email"
+                                    id="Email"
+                                    name="email"
+                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+
+                                >
+                                    <option value="Buyer">Buyer</option>
+                                    <option value="Seller">Seller</option>
+
+                                </select>
+                            </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label
                                     for="Password"
@@ -134,41 +137,26 @@ const Signup = () => {
 
                             <div class="col-span-6">
                                 <label for="MarketingAccept" class="flex gap-4">
-                                    <input
-                                        type="checkbox"
-                                        id="MarketingAccept"
-                                        name="marketing_accept"
-                                        class="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm"
-                                    />
-
                                     <span class="text-sm text-gray-700">
                                         I want to receive emails about events, product updates and
                                         company announcements.
                                     </span>
                                 </label>
                             </div>
-
-                            <div class="col-span-6">
-                                <p class="text-sm text-gray-500">
-                                    By creating an account, you agree to our
-                                    <a href="#" class="text-gray-700 underline">
-                                        terms and conditions
-                                    </a>
-                                    and
-                                    <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                                </p>
-                            </div>
-
                             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                                <button
-                                    class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
-                                >
-                                    Create an account
-                                </button>
+                                <Button>
+                                    <span className='text-black'>Create an account</span>
+
+                                </Button>
+
+                                <Button>
+                                    <span className='text-black'><FcGoogle></FcGoogle></span>
+
+                                </Button>
 
                                 <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                     Already have an account?
-                                    <a href="#" class="text-gray-700 underline">Log in</a>.
+                                    <Link to='/signin' class="text-gray-700 underline">Sign In</Link>.
                                 </p>
                             </div>
                         </form>

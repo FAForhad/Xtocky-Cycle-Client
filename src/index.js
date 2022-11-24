@@ -5,11 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'swiper/css';
 import "swiper/css/bundle";
+import UserContext from './UserContext/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <UserContext>
+      <App />
+    </UserContext>
   </React.StrictMode>
 );
 
