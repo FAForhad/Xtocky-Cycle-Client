@@ -9,9 +9,10 @@ import Home from '../Pages/Home/Home/Home';
 import SignIn from '../Pages/SignIn/SignIn';
 import Signup from '../Pages/Signup/Signup';
 import Error from './Error/Error';
-import Categories from '../Pages/Categories/Categories';
+import Categories from '../Pages/Categories/Categories/Categories';
 import Products from '../Pages/Products/Products/Products';
 import PrivateRoute from './PrivateRoute';
+import SingleCategories from '../Pages/Categories/SingleCategories/SingleCategories';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -27,7 +28,8 @@ const Routes = () => {
                     element: <Categories></Categories>
                 },
                 {
-                    path: '/signleCategory',
+                    path: '/signleCategory/:id',
+                    element: <PrivateRoute><SingleCategories></SingleCategories></PrivateRoute>,
                     loader: ({ params }) => fetch(`http://localhost:5000/allcategories/${params.id}`)
                 },
                 {

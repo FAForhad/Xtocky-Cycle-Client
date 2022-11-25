@@ -1,34 +1,43 @@
-import React from 'react';
+import { useState } from 'react';
+import { FcCheckmark } from 'react-icons/fc';
+import BookNowModal from '../../../Components/Modal/BookNowModal/BookNowModal';
 
 const Product = ({ products }) => {
-    console.log(products)
-    const { name, picture, Original_price, Used_year, resale_price, about, condition } = products
+
+    const [modalSheet, setModalSheet] = useState(null)
+    console.log(modalSheet)
+    const { name, picture, Original_price, Used_year, resale_price, about, condition, location } = products
     return (
-        <div class="p-4 ">
-            <div class="h-full  rounded-lg overflow-hidden">
-                <img class="lg:h-72 md:h-36 w-full object-cover object-center" src={picture} alt="blog" />
-                <div class="p-6">
-                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">CATEGORY</h2>
-                    <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{name}</h1>
-                    <p class="leading-relaxed mb-3">{about && about.slice(0, 110) + '...'}</p>
-                    <div class="flex items-center flex-wrap ">
-                        <span class="text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300">
+        <div className="p-4 ">
+            <div className="h-full  rounded-lg overflow-hidden">
+                <div className='lg:h-72 md:h-36 w-full object-cover object-center '>
+                    <img className="" src={picture} alt="blog" />
+                </div>
+                <div className="p-6">
+                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{name}</h1>
+                    <h2 className="tracking-widest flex justify-center items-center text-sm title-font font-medium text-gray-900 mb-3"><span className='font-bold mr-2'>{products?.author} </span> {products?.isVerified && <FcCheckmark></FcCheckmark>}</h2>
+                    <p className="leading-relaxed mb-3 text-start">{about}</p>
+                    <br />
+                    <p className="leading-relaxed mb-3 text-start">Location : {location}</p>
+                    <div className="flex items-center flex-wrap ">
+                        <span className="text-gray-600 font-semibold  mr-1 inline-flex items-center pr-1  py-1 border-r-2 border-gray-300">
                             Original Price : {Original_price}
                         </span>
-                        <span class="text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300">
+                        <span className="text-gray-600  font-semibold mr-1 inline-flex text-sm pr-1 py-1 border-r-2 border-gray-300">
                             Sale Price : {resale_price}
                         </span>
-                        <span class="text-gray-600 inline-flex items-center leading-none text-sm">
+                        <span className="text-gray-600  font-semibold mr-1 inline-flex items-center leading-none text-sm">
+                            Used Year : {Used_year}
+                        </span>
+                        <span className="text-gray-600  font-bold mr-1 inline-flex items-center leading-none text-sm">
                             Condition : {condition}
                         </span>
                     </div>
-                    <button class="text-orange-600 inline-flex items-center md:mb-2 lg:mb-0">Buy Now
-                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
+                    <label htmlFor="my-modal-3" onClick={() => { setModalSheet(products) }} className="text-orange-600 hover:text-orange-700 font-bold text-xl inline-flex items-center md:mb-2 lg:mb-0">Book Now</label>
                 </div>
+                {
+                    modalSheet && <BookNowModal key={products._id} modalSheet={modalSheet} setModalSheet={setModalSheet}></BookNowModal>
+                }
             </div>
         </div>
     );

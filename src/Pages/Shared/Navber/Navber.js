@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 const Navber = () => {
 
     const { user, logout } = useContext(Authcontext);
-    console.log(user)
 
     const handleLogOut = () => {
         logout()
@@ -24,7 +23,7 @@ const Navber = () => {
                 to='/'
                 aria-label="Home"
                 title="Home"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
                 Home
             </Link>
@@ -34,7 +33,7 @@ const Navber = () => {
                 to='/category'
                 aria-label="Our product"
                 title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
                 Category
             </Link>
@@ -44,7 +43,7 @@ const Navber = () => {
                 to="/blogs"
                 aria-label="blogs"
                 title="blogs"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
             >
                 Blogs
             </Link>
@@ -60,7 +59,7 @@ const Navber = () => {
                         to="/dashboard"
                         aria-label="dashboard"
                         title="dashboard"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200"
                     >
                         Dashboard
                     </Link>
@@ -69,7 +68,7 @@ const Navber = () => {
                     <button
                         onClick={handleLogOut}
                         title="Log Out"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                     >
                         Logout
                     </button>
@@ -85,7 +84,7 @@ const Navber = () => {
                         to="/signin"
                         aria-label="signin"
                         title="signin"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                     >
                         Sign in
                     </Link>
@@ -95,7 +94,7 @@ const Navber = () => {
                         to="/signup"
                         aria-label="signup"
                         title="signup"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                     >
                         Sign up
                     </Link>
@@ -119,9 +118,9 @@ const Navber = () => {
                             {menu}
                         </ul>
                     </div>
-                    <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                    <Link to='/' className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         <span className='text-4xl text-orange-500'> X</span>tocky Cycle
-                    </span>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

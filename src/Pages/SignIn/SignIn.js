@@ -14,11 +14,9 @@ const SignIn = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         signInUser(email, password)
             .then(result => {
                 const user = result.user
-                console.log(user)
                 form.reset()
                 toast.success('Successfully Login')
             })
@@ -30,7 +28,6 @@ const SignIn = () => {
         googleLogin()
             .then(result => {
                 const user = result.user
-                console.log(user)
                 toast.success('Login Successful')
             })
             .catch(error => console.log(error))
@@ -40,25 +37,25 @@ const SignIn = () => {
 
 
     return (
-        <section class="bg-white">
-            <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+        <section className="bg-white">
+            <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                 <section
-                    class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6"
+                    className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6"
                 >
                     <img
                         alt="Night"
                         src="https://electrek.co/wp-content/uploads/sites/3/2019/09/bianchi_esuv_eurobike_5.jpg?quality=82&strip=all"
-                        class="absolute inset-0 h-full w-full object-cover opacity-80"
+                        className="absolute inset-0 h-full w-full object-cover opacity-80"
                     />
 
-                    <div class="hidden lg:relative lg:block lg:p-12">
-                        <a class="block text-white border-spacing-5 border w-52 h-14 border-orange-500" href="/">
-                            <span class="ml-2 text-xl font-bold tracking-wide text-gray-500 uppercase">
+                    <div className="hidden lg:relative lg:block lg:p-12">
+                        <a className="block text-white border-spacing-5 border w-52 h-14 border-orange-500" href="/">
+                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-500 uppercase">
                                 <span className='text-4xl text-orange-500'> X</span>tocky Cycle
                             </span>
                         </a>
 
-                        <p class="mt-4 leading-relaxed text-white/90">
+                        <p className="mt-4 leading-relaxed text-white/90">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam
                             dolorum aliquam, quibusdam aperiam voluptatum.
                         </p>
@@ -67,23 +64,23 @@ const SignIn = () => {
 
                 <main
                     aria-label="Main"
-                    class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
+                    className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
                 >
-                    <div class="max-w-xl lg:max-w-3xl">
-                        <div class="relative -mt-16 block lg:hidden">
+                    <div className="max-w-xl lg:max-w-3xl">
+                        <div className="relative -mt-16 block lg:hidden">
                             <a
-                                class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20"
+                                className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20"
                                 href="/"
                             >
-                                <span class="sr-only">Home</span>
+                                <span className="sr-only">Home</span>
 
                             </a>
 
-                            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                                 <span className='text-4xl text-orange-500'> X</span>tocky Cycle
                             </span>
 
-                            <p class="mt-4 leading-relaxed text-gray-500">
+                            <p className="mt-4 leading-relaxed text-gray-500">
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
                                 nam dolorum aliquam, quibusdam aperiam voluptatum.
                             </p>
@@ -91,11 +88,11 @@ const SignIn = () => {
 
                         <form
                             onSubmit={handleloginUser}
-                            class="mt-8 grid grid-cols-6 gap-6">
+                            className="mt-8 grid grid-cols-6 gap-6">
 
 
-                            <div class="col-span-6">
-                                <label for="Email" class="block text-sm font-medium text-gray-700">
+                            <div className="col-span-6">
+                                <label for="Email" className="block text-sm font-medium text-gray-700">
                                     Email
                                 </label>
 
@@ -103,15 +100,15 @@ const SignIn = () => {
                                     type="email"
                                     id="Email"
                                     name="email"
-                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                     required
                                 />
                             </div>
 
-                            <div class="col-span-6">
+                            <div className="col-span-6">
                                 <label
                                     for="Password"
-                                    class="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Password
                                 </label>
@@ -120,23 +117,23 @@ const SignIn = () => {
                                     type="password"
                                     id="Password"
                                     name="password"
-                                    class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                     required
                                 />
                             </div>
 
 
-                            <div class="col-span-6">
-                                <label for="MarketingAccept" class="flex gap-4">
+                            <div className="col-span-6">
+                                <label for="MarketingAccept" className="flex gap-4">
 
-                                    <span class="text-sm text-gray-700">
+                                    <span className="text-sm text-gray-700">
                                         I want to receive emails about events, product updates and
                                         company announcements.
                                     </span>
                                 </label>
                             </div>
 
-                            <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                            <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
 
                                 <Button
                                     type='submit'
@@ -145,9 +142,9 @@ const SignIn = () => {
 
                                 </Button>
 
-                                <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+                                <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                                     Do not have an account ?
-                                    <Link to='/signup' class="text-gray-700 underline"> SignUp</Link>.
+                                    <Link to='/signup' className="text-gray-700 underline"> SignUp</Link>.
                                 </p>
                             </div>
                         </form>
