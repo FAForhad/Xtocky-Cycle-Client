@@ -18,7 +18,7 @@ const BookNowModal = ({ modalSheet, setModalSheet }) => {
                     <input type="text" value={user?.displayName} readOnly placeholder="Type here" className="input input-bordered input-md w-full max-w-sm mt-2" />
                     <input type="text" value={user?.email} readOnly placeholder="Type here" className="input input-bordered input-md w-full max-w-sm mt-2" />
                     <input type="text" value={modalSheet?.resale_price} readOnly placeholder="Type here" className="input input-bordered input-md w-full max-w-sm mt-2" />
-                    <input type="number" readOnly placeholder="Your Phone Number" className="input input-bordered input-md w-full max-w-sm mt-2" />
+                    <input type="number" readOnly placeholder="Your Phone Number" className="input input-bordered textarea-warning input-md w-full max-w-sm mt-2" />
                     <textarea className="textarea textarea-warning input-bordered input-md w-full max-w-sm mt-2" placeholder="Meet Location"></textarea>
                     <Button> <span className='text-black'>BOOK NOW</span></Button>
                 </div>

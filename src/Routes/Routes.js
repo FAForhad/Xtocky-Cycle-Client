@@ -4,7 +4,6 @@ import {
     RouterProvider
 } from "react-router-dom";
 import Main from '../Layouts/Main/Main';
-import Dashboard from '../Pages/Dashboard/Dashboard/Dashboard';
 import Home from '../Pages/Home/Home/Home';
 import SignIn from '../Pages/SignIn/SignIn';
 import Signup from '../Pages/Signup/Signup';
@@ -13,6 +12,9 @@ import Categories from '../Pages/Categories/Categories/Categories';
 import Products from '../Pages/Products/Products/Products';
 import PrivateRoute from './PrivateRoute';
 import SingleCategories from '../Pages/Categories/SingleCategories/SingleCategories';
+import Dashboard from '../Layouts/Dashboard/Dashboard';
+import MyOrders from '../Pages/Dashboard/MyOrders/MyOrders';
+import MyProducts from '../Pages/Dashboard/MyProducts/MyProducts';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -48,7 +50,17 @@ const Routes = () => {
         },
         {
             path: '/dashboard',
-            element: <Dashboard></Dashboard>
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+            children: [
+                {
+                    path: '/dashboard',
+                    element: <MyOrders></MyOrders>
+                },
+                {
+                    path: '/dashboard/myproducts',
+                    element: <MyProducts></MyProducts>
+                }
+            ]
         },
         {
             path: '*',
