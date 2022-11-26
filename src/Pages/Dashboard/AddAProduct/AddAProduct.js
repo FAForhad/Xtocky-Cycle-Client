@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import Button from '../../../Components/Button/Button';
 import { Authcontext } from '../../../UserContext/UserContext';
 
@@ -21,9 +22,21 @@ const AddAProduct = () => {
         const about = form.about.value;
         const categoryId = form.categoryId.value;
         const product = {
-            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId
+            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName
         }
-
+        fetch('http://localhost:5000/allproducts', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(data => {
+                console.log(data)
+                toast.success('Your Post Added')
+                form.reset()
+            })
+            .catch(error => console.error(error))
     }
 
 
@@ -82,7 +95,7 @@ const AddAProduct = () => {
                                     <div>
                                         <input
                                             class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                            placeholder="Resale Price"
+                                            placeholder="Resale Price ($)"
                                             type="tel"
                                             required
                                             name='resale_price'
@@ -91,7 +104,7 @@ const AddAProduct = () => {
                                     <div>
                                         <input
                                             class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                            placeholder="Original Price"
+                                            placeholder="Original Price ($)"
                                             name='Original_price'
                                             type="tel"
                                             required
