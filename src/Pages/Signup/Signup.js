@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import { FcGoogle } from "react-icons/fc";
@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Signup = () => {
 
-    const { user, register, updateUserProfile, googleLogin } = useContext(Authcontext)
+    const { register, updateUserProfile, googleLogin } = useContext(Authcontext)
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -23,21 +23,23 @@ const Signup = () => {
         register(email, password)
             .then(result => {
                 const user = result.user;
-                handleupdateUser(name, photo)
-                saveUser(name, email, type)
-                toast.success('Successfully Sign Up!', {
-                    style: {
-                        border: '1px solid #713200',
-                        padding: '16px',
-                        color: '#713200',
-                    },
-                    iconTheme: {
-                        primary: '#713200',
-                        secondary: '#FFFAEE',
-                    },
-                });
-                form.reset()
-                navigate(from, { replace: true });
+                if (user?.uid) {
+                    handleupdateUser(name, photo)
+                    saveUser(name, email, type)
+                    toast.success('Account Created Successfully!', {
+                        style: {
+                            border: '1px solid #713200',
+                            padding: '16px',
+                            color: '#713200',
+                        },
+                        iconTheme: {
+                            primary: '#713200',
+                            secondary: '#FFFAEE',
+                        },
+                    });
+                    form.reset()
+                    navigate(from, { replace: true });
+                }
             })
             .then(error => console.error(error))
     }
@@ -54,7 +56,7 @@ const Signup = () => {
     }
 
 
-    const saveUser = (name, email, type) => {
+    const saveUser = (name, email, type = 'Buyer') => {
         const user = { name, email, role: type };
         fetch('http://localhost:5000/users', {
             method: "POST",
@@ -73,8 +75,11 @@ const Signup = () => {
         googleLogin()
             .then(result => {
                 const user = result.user
-                navigate(from, { replace: true });
-                toast.success('Login Successful')
+                if (user.uid) {
+                    toast.success('Login Successful')
+                    navigate(from, { replace: true });
+                }
+                saveUser(user.displayName, user.email)
             })
             .catch(error => console.log(error))
     }

@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import DashBoardButton from '../../Components/DashBoardButton/DashBoardButton';
 import Navber from '../../Pages/Shared/Navber/Navber';
+import { Authcontext } from '../../UserContext/UserContext';
 
 const Dashboard = () => {
+    const [currentUser, setCurrentUser] = useState([])
+    const { user } = useContext(Authcontext)
+    console.log(user, currentUser)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/adimn/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setCurrentUser(data)
+            })
+    }, [user.email])
+
     return (
         <div className=''>
             <Navber></Navber>
@@ -15,13 +28,25 @@ const Dashboard = () => {
                 <div className="drawer-side sticky">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        <Link to='/dashboard' ><DashBoardButton> <span className='text-black px-3'>My orders</span></DashBoardButton></Link>
-                        <Link to='/dashboard/myproducts'><DashBoardButton><span className='text-black px-1'>My products</span></DashBoardButton> </Link>
-                        <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>My buyers</span></DashBoardButton> </Link>
-                        <Link to='/dashboard'><DashBoardButton><span className='text-black'>Add A product</span></DashBoardButton> </Link>
-                        <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Sellers</span></DashBoardButton> </Link>
-                        <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Buyers</span></DashBoardButton> </Link>
-                        <Link to='/dashboard'><DashBoardButton><span className='text-black'>Reported Items</span></DashBoardButton> </Link>
+                        <img className=" w-48 h-48  mx-auto mask mask-circle" src={user.photoURL} alt='' />
+                        <h2 className='text-2xl pb-3 uppercase font-bold text-orange-600'>{user.displayName}</h2>
+                        {
+                            currentUser.role === 'Buyer' && <> <Link to='/dashboard' ><DashBoardButton> <span className='text-black px-3'>My orders</span></DashBoardButton></Link></>
+                        }
+                        {
+                            currentUser.role === 'Seller' && <>
+                                <Link to='/dashboard/myproducts'><DashBoardButton><span className='text-black px-1'>My products</span></DashBoardButton> </Link>
+                                <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>My buyers</span></DashBoardButton> </Link>
+                                <Link to='/dashboard'><DashBoardButton><span className='text-black'>Add A product</span></DashBoardButton> </Link>
+                            </>
+                        }
+                        {
+                            currentUser.role === 'Admin' && <>
+                                <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Sellers</span></DashBoardButton> </Link>
+                                <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Buyers</span></DashBoardButton> </Link>
+                                <Link to='/dashboard'><DashBoardButton><span className='text-black'>Reported Items</span></DashBoardButton> </Link>
+                            </>
+                        }
                     </ul>
                 </div>
             </div>

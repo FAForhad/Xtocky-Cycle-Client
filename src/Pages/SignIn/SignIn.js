@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import { FcGoogle } from "react-icons/fc";
 import { Authcontext } from '../../UserContext/UserContext';
 import toast from 'react-hot-toast';
 
 const SignIn = () => {
-    const { user, googleLogin, signInUser } = useContext(Authcontext)
+    const { googleLogin, signInUser } = useContext(Authcontext)
     const location = useLocation()
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleloginUser = (event) => {
         event.preventDefault()
@@ -17,18 +19,39 @@ const SignIn = () => {
         signInUser(email, password)
             .then(result => {
                 const user = result.user
-                form.reset()
-                toast.success('Successfully Login')
+                if (user.uid) {
+                    toast.success('Successfully Login')
+                    form.reset()
+                    navigate(from, { replace: true });
+                }
             })
             .then(error => console.error(error))
     }
 
+    const saveUser = (name, email, type = 'Buyer') => {
+        const user = { name, email, role: type };
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
 
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
                 const user = result.user
-                toast.success('Login Successful')
+                if (user.uid) {
+                    toast.success('Login Successful')
+                    navigate(from, { replace: true });
+                }
+                saveUser(user.displayName, user.email)
             })
             .catch(error => console.log(error))
     }
