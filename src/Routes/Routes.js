@@ -15,6 +15,9 @@ import SingleCategories from '../Pages/Categories/SingleCategories/SingleCategor
 import Dashboard from '../Layouts/Dashboard/Dashboard';
 import MyOrders from '../Pages/Dashboard/MyOrders/MyOrders';
 import MyProducts from '../Pages/Dashboard/MyProducts/MyProducts';
+import AddAProduct from '../Pages/Dashboard/AddAProduct/AddAProduct';
+import Feature from '../Pages/Home/Feature/Feature';
+import DashboardFeautre from '../Pages/Dashboard/DashboardFeautre/DashboardFeautre';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -54,7 +57,15 @@ const Routes = () => {
             children: [
                 {
                     path: '/dashboard',
+                    element: <DashboardFeautre></DashboardFeautre>
+                },
+                {
+                    path: '/dashboard/myorders',
                     element: <MyOrders></MyOrders>
+                },
+                {
+                    path: '/dashboard/addaproduct',
+                    element: <AddAProduct></AddAProduct>
                 },
                 {
                     path: '/dashboard/myproducts',

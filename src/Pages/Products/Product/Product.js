@@ -21,10 +21,10 @@ const Product = ({ products }) => {
                     <p className="leading-relaxed mb-3 text-start">Location : {location}</p>
                     <div className="flex items-center flex-wrap ">
                         <span className="text-gray-600 font-semibold  mr-1 inline-flex items-center pr-1  py-1 border-r-2 border-gray-300">
-                            Original Price : {Original_price}
+                            Original Price :$ {Original_price}
                         </span>
                         <span className="text-gray-600  font-semibold mr-1 inline-flex text-sm pr-1 py-1 border-r-2 border-gray-300">
-                            Sale Price : {resale_price}
+                            Sale Price : $ {resale_price}
                         </span>
                         <span className="text-gray-600  font-semibold mr-1 inline-flex items-center leading-none text-sm">
                             Used Year : {Used_year}

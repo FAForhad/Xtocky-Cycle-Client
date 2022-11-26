@@ -35,9 +35,9 @@ const Dashboard = () => {
                         }
                         {
                             currentUser.role === 'Seller' && <>
+                                <Link to='/dashboard/addaproduct'><DashBoardButton><span className='text-black'>Add A product</span></DashBoardButton> </Link>
                                 <Link to='/dashboard/myproducts'><DashBoardButton><span className='text-black px-1'>My products</span></DashBoardButton> </Link>
                                 <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>My buyers</span></DashBoardButton> </Link>
-                                <Link to='/dashboard'><DashBoardButton><span className='text-black'>Add A product</span></DashBoardButton> </Link>
                             </>
                         }
                         {
