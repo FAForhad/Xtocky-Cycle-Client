@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import { FcGoogle } from "react-icons/fc";
 import { Authcontext } from '../../UserContext/UserContext';
@@ -8,6 +8,9 @@ import toast from 'react-hot-toast';
 const Signup = () => {
 
     const { user, register, updateUserProfile, googleLogin } = useContext(Authcontext)
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSingUp = (event) => {
         event.preventDefault()
@@ -20,8 +23,8 @@ const Signup = () => {
         register(email, password)
             .then(result => {
                 const user = result.user;
-                form.reset()
                 handleupdateUser(name, photo)
+                saveUser(name, email, type)
                 toast.success('Successfully Sign Up!', {
                     style: {
                         border: '1px solid #713200',
@@ -33,6 +36,8 @@ const Signup = () => {
                         secondary: '#FFFAEE',
                     },
                 });
+                form.reset()
+                navigate(from, { replace: true });
             })
             .then(error => console.error(error))
     }
@@ -45,13 +50,30 @@ const Signup = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.log(error))
+
     }
 
+
+    const saveUser = (name, email, type) => {
+        const user = { name, email, role: type };
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
 
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
                 const user = result.user
+                navigate(from, { replace: true });
                 toast.success('Login Successful')
             })
             .catch(error => console.log(error))
