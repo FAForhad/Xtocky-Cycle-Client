@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import { Authcontext } from '../../../UserContext/UserContext';
 
 const AddAProduct = () => {
     const { user } = useContext(Authcontext)
-
+    const navigate = useNavigate()
 
     const handleAddproduct = (event) => {
         event.preventDefault()
@@ -34,6 +35,7 @@ const AddAProduct = () => {
             .then(data => {
                 console.log(data)
                 toast.success('Your Post Added')
+                navigate('/dashboard/myproducts')
                 form.reset()
             })
             .catch(error => console.error(error))
@@ -113,7 +115,7 @@ const AddAProduct = () => {
                                     <div>
                                         <input
                                             class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                            placeholder="Used Year"
+                                            placeholder="Year of purchase"
                                             type="tel"
                                             required
                                             name='Used_year'
@@ -149,7 +151,7 @@ const AddAProduct = () => {
                                         >
                                             <option value="Excellent">Excellent</option>
                                             <option value="Good">Good</option>
-                                            <option value="Stabled">Stabled</option>
+                                            <option value="Fair">Fair</option>
                                         </select>
                                     </div>
                                 </div>
