@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import Loader from '../../../Components/Loader/Loader';
 import { Authcontext } from '../../../UserContext/UserContext';
 
 const MyProducts = () => {
     const { user } = useContext(Authcontext)
-    const { data: myProducts = [], isLoading } = useQuery({
+    const { data: myProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['myproduct?email', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`)
@@ -15,8 +16,20 @@ const MyProducts = () => {
     })
 
 
-    const handleDeleteItem = () => {
-
+    const handleDeleteItem = (id) => {
+        const confirm = window.confirm('Are you sure, you want to delete this Item??')
+        if (confirm) {
+            fetch(`http://localhost:5000/myproduct/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Deleted Successfully')
+                        refetch()
+                    }
+                })
+        }
     }
 
 
@@ -65,7 +78,7 @@ const MyProducts = () => {
                                 <th className='text-green-500'>
                                     available
                                 </th>
-                                <th><button onClick={handleDeleteItem} className='hover:text-orange-500'>
+                                <th><button onClick={() => handleDeleteItem(myproduct._id)} className='hover:text-orange-500'>
                                     Delete Item
                                 </button>
                                 </th>
