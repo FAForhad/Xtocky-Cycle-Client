@@ -25,7 +25,7 @@ const Signup = () => {
                 const user = result.user;
                 if (user?.uid) {
                     handleupdateUser(name, photo)
-                    saveUser(name, email, type)
+                    saveUser(name, email, photo, type)
                     toast.success('Account Created Successfully!', {
                         style: {
                             border: '1px solid #713200',
@@ -56,8 +56,8 @@ const Signup = () => {
     }
 
 
-    const saveUser = (name, email, type = 'Buyer') => {
-        const user = { name, email, role: type };
+    const saveUser = (name, email, photo, type = 'Buyer') => {
+        const user = { name, email, photo, role: type };
         fetch('http://localhost:5000/users', {
             method: "POST",
             headers: {
@@ -79,7 +79,7 @@ const Signup = () => {
                     toast.success('Login Successful')
                     navigate(from, { replace: true });
                 }
-                saveUser(user.displayName, user.email)
+                saveUser(user.displayName, user.email, user?.photoURL)
             })
             .catch(error => console.log(error))
     }

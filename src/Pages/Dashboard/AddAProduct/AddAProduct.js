@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
@@ -7,6 +7,17 @@ import { Authcontext } from '../../../UserContext/UserContext';
 const AddAProduct = () => {
     const { user } = useContext(Authcontext)
     const navigate = useNavigate()
+
+    const [currentUser, setCurrentUser] = useState([])
+    console.log(user, currentUser)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setCurrentUser(data)
+            })
+    }, [user.email])
 
     const handleAddproduct = (event) => {
         event.preventDefault()
@@ -23,8 +34,9 @@ const AddAProduct = () => {
         const about = form.about.value;
         const categoryId = form.categoryId.value;
         const date = form.date.value;
+        const isVerifyed = currentUser?.isVerifyed
         const product = {
-            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName, date
+            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName, isVerifyed, date,
         }
         fetch('http://localhost:5000/allproducts', {
             method: "POST",

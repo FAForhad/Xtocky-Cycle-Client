@@ -10,12 +10,13 @@ const Dashboard = () => {
     console.log(user, currentUser)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/adimn/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setCurrentUser(data)
             })
     }, [user.email])
+
 
     return (
         <div className=''>
@@ -42,8 +43,8 @@ const Dashboard = () => {
                         }
                         {
                             currentUser.role === 'Admin' && <>
-                                <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Sellers</span></DashBoardButton> </Link>
-                                <Link to='/dashboard'><DashBoardButton><span className='text-black px-3'>All Buyers</span></DashBoardButton> </Link>
+                                <Link to='/dashboard/allsellers'><DashBoardButton><span className='text-black px-3'>All Sellers</span></DashBoardButton> </Link>
+                                <Link to='/dashboard/allbuyers'><DashBoardButton><span className='text-black px-3'>All Buyers</span></DashBoardButton> </Link>
                                 <Link to='/dashboard'><DashBoardButton><span className='text-black'>Reported Items</span></DashBoardButton> </Link>
                             </>
                         }
