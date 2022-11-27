@@ -31,7 +31,7 @@ const Dashboard = () => {
                         <img className=" w-48 h-48  mx-auto mask mask-circle" src={user.photoURL} alt='' />
                         <h2 className='text-2xl pb-3 uppercase font-bold text-orange-600'>{user.displayName}</h2>
                         {
-                            currentUser.role === 'Buyer' && <> <Link to='/dashboard' ><DashBoardButton> <span className='text-black px-3'>My orders</span></DashBoardButton></Link></>
+                            currentUser.role === 'Buyer' && <> <Link to='/dashboard/myorders' ><DashBoardButton> <span className='text-black px-3'>My orders</span></DashBoardButton></Link></>
                         }
                         {
                             currentUser.role === 'Seller' && <>

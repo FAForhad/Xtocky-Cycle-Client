@@ -25,11 +25,26 @@ const MyProducts = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast.success('Deleted Successfully')
+                        toast.success('Deleted Successfully', {
+                            style: {
+                                border: '1px solid #713200',
+                                padding: '16px',
+                                color: '#713200',
+                            },
+                            iconTheme: {
+                                primary: '#713200',
+                                secondary: '#FFFAEE',
+                            },
+                        })
                         refetch()
                     }
                 })
         }
+    }
+
+
+    const handleAddtoAdvertise = () => {
+
     }
 
 
@@ -51,6 +66,7 @@ const MyProducts = () => {
                             <th>Title</th>
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Add on Advertise?</th>
                             <th>Delete item</th>
                         </tr>
                     </thead>
@@ -77,6 +93,9 @@ const MyProducts = () => {
                                 <td>$ {myproduct?.Original_price}</td>
                                 <th className='text-green-500'>
                                     available
+                                </th>
+                                <th>
+                                    <button onClick={() => handleAddtoAdvertise(myproduct._id)} className='hover:text-green-500'>Add to advertise</button>
                                 </th>
                                 <th><button onClick={() => handleDeleteItem(myproduct._id)} className='hover:text-orange-500'>
                                     Delete Item

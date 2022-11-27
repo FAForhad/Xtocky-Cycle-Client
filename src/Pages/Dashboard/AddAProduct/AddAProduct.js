@@ -22,8 +22,9 @@ const AddAProduct = () => {
         const condition = form.condition.value;
         const about = form.about.value;
         const categoryId = form.categoryId.value;
+        const date = form.date.value;
         const product = {
-            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName
+            Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName, date
         }
         fetch('http://localhost:5000/allproducts', {
             method: "POST",
@@ -34,16 +35,22 @@ const AddAProduct = () => {
         })
             .then(data => {
                 console.log(data)
-                toast.success('Your Post Added')
+                toast.success('Your Post Added', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                })
                 navigate('/dashboard/myproducts')
                 form.reset()
             })
             .catch(error => console.error(error))
     }
-
-
-
-
 
 
 
@@ -165,7 +172,7 @@ const AddAProduct = () => {
                                         name='about'
                                     ></textarea>
                                 </div>
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
                                     <div>
                                         <label class="sr-only" for="email">Email</label>
                                         <input
@@ -189,6 +196,19 @@ const AddAProduct = () => {
                                             required
                                             id="phone"
                                             name='phone'
+                                        />
+                                    </div>
+                                    <div>
+                                        <label class="sr-only" for="phone">date</label>
+                                        <input
+                                            class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                                            placeholder="date"
+                                            type="date"
+                                            min="2022-01-01"
+                                            max="2030-12-31"
+                                            required
+                                            id="date"
+                                            name='date'
                                         />
                                     </div>
                                 </div>

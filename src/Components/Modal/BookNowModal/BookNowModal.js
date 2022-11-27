@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Authcontext } from '../../../UserContext/UserContext';
 import Button from '../../Button/Button';
 
@@ -9,12 +10,43 @@ const BookNowModal = ({ modalSheet, setModalSheet }) => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value
+        const picture = modalSheet?.picture;
+        const authorEmail = modalSheet?.email;
         const buyerName = form.buyerName.value
         const email = form.email.value
         const price = form.price.value
         const number = form.number.value
         const meetLocation = form.meetLocation.value
-        console.log(name, buyerName, email, price, number, meetLocation)
+
+        const booking = {
+            name, buyerName, email, price, number, meetLocation, picture, authorEmail
+        }
+
+        fetch('http://localhost:5000/bookings', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(data => {
+                console.log(data)
+                toast.success('You are ready to buy, Please chech your booking products', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                })
+                form.reset()
+                setModalSheet(null)
+            })
+            .catch(error => console.error(error))
+
     }
     console.log(user)
     return (
