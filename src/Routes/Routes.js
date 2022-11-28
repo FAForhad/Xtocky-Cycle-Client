@@ -20,6 +20,8 @@ import Feature from '../Pages/Home/Feature/Feature';
 import DashboardFeautre from '../Pages/Dashboard/DashboardFeautre/DashboardFeautre';
 import AllSellers from '../Pages/Dashboard/AllSellers/AllSellers';
 import AllBuyers from '../Pages/Dashboard/AllBuyers/AllBuyers';
+import AdminRoute from './AdminRoute/AdminRoute';
+import SellersRoute from './SellersRoute/SellersRoute';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -67,19 +69,19 @@ const Routes = () => {
                 },
                 {
                     path: '/dashboard/addaproduct',
-                    element: <AddAProduct></AddAProduct>
+                    element: <SellersRoute> <AddAProduct></AddAProduct></SellersRoute>
                 },
                 {
                     path: '/dashboard/myproducts',
-                    element: <MyProducts></MyProducts>
+                    element: <SellersRoute> <MyProducts></MyProducts></SellersRoute>
                 },
                 {
                     path: '/dashboard/allsellers',
-                    element: <AllSellers></AllSellers>
+                    element: <AdminRoute> <AllSellers></AllSellers></AdminRoute>
                 },
                 {
                     path: '/dashboard/allbuyers',
-                    element: <AllBuyers></AllBuyers>
+                    element: <AdminRoute> <AllBuyers></AllBuyers></AdminRoute>
                 }
             ]
         },

@@ -3,10 +3,25 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import { Authcontext } from '../../../UserContext/UserContext';
+import { format } from 'date-fns';
+import { DayPicker } from 'react-day-picker';
 
 const AddAProduct = () => {
     const { user } = useContext(Authcontext)
     const navigate = useNavigate()
+
+
+
+    const today = new Date();
+    const [selectedDay, setSelectedDay] = useState(today);
+
+    const footer = selectedDay ? (
+        <p>Today selected {format(selectedDay, 'PPP')}.</p>
+    ) : (
+        <p>Please pick a day.</p>
+    );
+
+
 
     const [currentUser, setCurrentUser] = useState([])
     console.log(user, currentUser)
@@ -78,7 +93,15 @@ const AddAProduct = () => {
 
                             <div class="mt-10 not-italic text-lg lg:text-5xl font-bold text-orange-500">
                                 Deal Online With <br /> Confidence
-
+                            </div>
+                            <div class="mt-10 lg:ml-16">
+                                <DayPicker
+                                    mode="single"
+                                    required
+                                    selected={selectedDay}
+                                    // onSelect={setSelectedDay}
+                                    footer={footer}
+                                />
                             </div>
                         </div>
 
@@ -215,12 +238,12 @@ const AddAProduct = () => {
                                         <input
                                             class="w-full rounded-lg border-gray-200 p-3 text-sm"
                                             placeholder="date"
-                                            type="date"
-                                            min="2022-01-01"
-                                            max="2030-12-31"
+                                            type="text"
                                             required
                                             id="date"
                                             name='date'
+                                            value={format(selectedDay, 'PPP')}
+                                            readOnly
                                         />
                                     </div>
                                 </div>

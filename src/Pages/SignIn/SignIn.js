@@ -4,6 +4,7 @@ import Button from '../../Components/Button/Button';
 import { FcGoogle } from "react-icons/fc";
 import { Authcontext } from '../../UserContext/UserContext';
 import toast from 'react-hot-toast';
+import { JwtToken } from '../../Components/Token/JwtToken';
 
 const SignIn = () => {
     const { googleLogin, signInUser } = useContext(Authcontext)
@@ -20,6 +21,7 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user
                 if (user.uid) {
+                    JwtToken(user)
                     toast.success('Successfully Login')
                     form.reset()
                     navigate(from, { replace: true });

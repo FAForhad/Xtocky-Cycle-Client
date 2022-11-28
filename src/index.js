@@ -7,6 +7,7 @@ import 'swiper/css';
 import "swiper/css/bundle";
 import UserContext from './UserContext/UserContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import 'react-day-picker/dist/style.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
