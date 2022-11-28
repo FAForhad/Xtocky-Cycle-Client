@@ -10,7 +10,7 @@ const Dashboard = () => {
     console.log(user, currentUser)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://xtocky-cycle-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setCurrentUser(data)

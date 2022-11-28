@@ -12,7 +12,7 @@ const SingleCategories = () => {
     const { data: products, isLoading } = useQuery({
         queryKey: ['/allproducts/category?categoryId', _id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allproducts/category?categoryId=${_id}`)
+            const res = await fetch(`https://xtocky-cycle-server.vercel.app/allproducts/category?categoryId=${_id}`)
             const data = res.json()
             return data
         }

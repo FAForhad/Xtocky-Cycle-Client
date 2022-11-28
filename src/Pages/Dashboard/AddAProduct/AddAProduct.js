@@ -27,7 +27,11 @@ const AddAProduct = () => {
     console.log(user, currentUser)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://xtocky-cycle-server.vercel.app/users/${user.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setCurrentUser(data)
@@ -53,7 +57,7 @@ const AddAProduct = () => {
         const product = {
             Original_price, resale_price, picture, name, email, phone, location, Used_year, condition, about, categoryId, author: user?.displayName, isVerifyed, date,
         }
-        fetch('http://localhost:5000/allproducts', {
+        fetch('https://xtocky-cycle-server.vercel.app/allproducts', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

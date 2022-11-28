@@ -6,7 +6,11 @@ const Products = () => {
     const { data: allProducts, isLoading } = useQuery({
         queryKey: ['allproducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allproducts')
+            const res = await fetch('https://xtocky-cycle-server.vercel.app/allproducts', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            })
             const data = await res.json()
             return data
         }

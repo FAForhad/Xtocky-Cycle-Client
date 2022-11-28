@@ -22,6 +22,7 @@ import AllSellers from '../Pages/Dashboard/AllSellers/AllSellers';
 import AllBuyers from '../Pages/Dashboard/AllBuyers/AllBuyers';
 import AdminRoute from './AdminRoute/AdminRoute';
 import SellersRoute from './SellersRoute/SellersRoute';
+import Blogs from '../Pages/Blogs/Blogs';
 const Routes = () => {
     const router = createBrowserRouter([
         {
@@ -39,7 +40,7 @@ const Routes = () => {
                 {
                     path: '/signleCategory/:id',
                     element: <PrivateRoute><SingleCategories></SingleCategories></PrivateRoute>,
-                    loader: ({ params }) => fetch(`http://localhost:5000/allcategories/${params.id}`)
+                    loader: ({ params }) => fetch(`https://xtocky-cycle-server.vercel.app/allcategories/${params.id}`)
                 },
                 {
                     path: '/products',
@@ -53,6 +54,10 @@ const Routes = () => {
                     path: '/signin',
                     element: < SignIn></SignIn>
                 },
+                {
+                    path: '/blogs',
+                    element: <Blogs></Blogs>
+                }
             ]
         },
         {

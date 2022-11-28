@@ -12,10 +12,10 @@ const SellersRoute = ({ children }) => {
     if (loading || isSellerLoading) {
         return <Loader></Loader>
     }
-    if (isSeller !== 'Seller') {
-        return <Navigate to='/signin' state={{ from: location }} replace></Navigate>
+    if (isSeller === 'Seller') {
+        return children
     }
-    return children
+    return <Navigate to='/signin' state={{ from: location }} replace></Navigate>
 
 
 };

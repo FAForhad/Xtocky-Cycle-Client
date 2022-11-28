@@ -8,7 +8,11 @@ const AllSellers = () => {
     const { data: allsellers, isLoading, refetch } = useQuery({
         queryKey: ['allsellers?role=Seller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allsellers?role=Seller')
+            const res = await fetch('https://xtocky-cycle-server.vercel.app/allsellers?role=Seller', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            })
             const data = res.json()
             return data
         }
@@ -20,7 +24,7 @@ const AllSellers = () => {
 
 
     const handleUpdateUser = (id) => {
-        fetch(`http://localhost:5000/verifyuser/${id}`, {
+        fetch(`https://xtocky-cycle-server.vercel.app/verifyuser/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +45,7 @@ const AllSellers = () => {
     const handleDeleteItem = (id) => {
         const confirm = window.confirm('Are you sure, you want to delete this Item??')
         if (confirm) {
-            fetch(`http://localhost:5000/allsellers/${id}`, {
+            fetch(`https://xtocky-cycle-server.vercel.app/allsellers/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

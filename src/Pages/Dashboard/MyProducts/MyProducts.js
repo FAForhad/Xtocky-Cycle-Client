@@ -9,7 +9,11 @@ const MyProducts = () => {
     const { data: myProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['myproduct?email', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`)
+            const res = await fetch(`https://xtocky-cycle-server.vercel.app/myproduct?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            })
             const data = await res.json()
             return data
         }
@@ -19,7 +23,7 @@ const MyProducts = () => {
     const handleDeleteItem = (id) => {
         const confirm = window.confirm('Are you sure, you want to delete this Item??')
         if (confirm) {
-            fetch(`http://localhost:5000/myproduct/${id}`, {
+            fetch(`https://xtocky-cycle-server.vercel.app/myproduct/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

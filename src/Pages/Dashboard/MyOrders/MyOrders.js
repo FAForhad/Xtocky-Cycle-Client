@@ -10,7 +10,7 @@ const MyOrders = () => {
     const { data: myOrders = [], isLoading, refetch } = useQuery({
         queryKey: ['mybookings?email', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/mybookings?email=${user?.email}`)
+            const res = await fetch(`https://xtocky-cycle-server.vercel.app/mybookings?email=${user?.email}`)
             const data = await res.json()
             return data;
         }
@@ -24,7 +24,7 @@ const MyOrders = () => {
     const handleDeleteItem = (id) => {
         const confirm = window.confirm('Are you sure, you want to delete this Item forom cart??')
         if (confirm) {
-            fetch(`http://localhost:5000/mybookings/${id}`, {
+            fetch(`https://xtocky-cycle-server.vercel.app/mybookings/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

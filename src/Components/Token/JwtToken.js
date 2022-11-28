@@ -4,7 +4,7 @@ export const JwtToken = (user) => {
     }
 
     console.log(user)
-    fetch('http://localhost:5000/jwt', {
+    fetch('https://xtocky-cycle-server.vercel.app/jwt', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

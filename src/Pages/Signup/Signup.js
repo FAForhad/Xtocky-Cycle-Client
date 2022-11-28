@@ -58,7 +58,7 @@ const Signup = () => {
 
     const saveUser = (name, email, photo, type = 'Buyer') => {
         const user = { name, email, photo, role: type };
-        fetch('http://localhost:5000/users', {
+        fetch('https://xtocky-cycle-server.vercel.app/users', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
