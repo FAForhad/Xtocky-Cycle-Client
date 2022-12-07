@@ -10,11 +10,7 @@ const Categories = () => {
     const { data: allCategories, isLoading } = useQuery({
         queryKey: ['allcategories'],
         queryFn: async () => {
-            const res = await fetch('https://xtocky-cycle-server.vercel.app/allcategories', {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('Token')}`
-                }
-            })
+            const res = await fetch('https://xtocky-cycle-server.vercel.app/allcategories')
             const data = await res.json()
             return data
         }
