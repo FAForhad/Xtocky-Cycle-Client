@@ -16,7 +16,7 @@ const Product = ({ products }) => {
                 <div className="p-6">
                     <h1 className="title-font text-lg font-medium text-gray-900 my-3">{name}</h1>
                     <h2 className="tracking-widest flex justify-center items-center text-sm title-font font-medium text-gray-900 mb-3"><span className='font-bold mr-2'>{products?.author} </span> {products?.isVerifyed && <FcCheckmark></FcCheckmark>}</h2>
-                    <p className="leading-relaxed mb-3 text-start">{about}</p>
+                    <p className="leading-relaxed mb-3 text-start">{about ? about.slice(0, 150) + '...' : about + '...'}</p>
                     <br />
                     <p className="leading-relaxed mb-3 text-start">Location : {location}</p>
                     <p className="leading-relaxed mb-3 text-start">Phone : {phone}</p>

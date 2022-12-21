@@ -36,7 +36,7 @@ const Advertised = () => {
                         data-swiper-parallax="-15%"
                     ></div>
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"
                                 src="https://static.designboom.com/wp-content/uploads/2022/07/stromer-st7-bike-designboom-700-400x320-22b08q85r792.jpg"
@@ -53,7 +53,7 @@ const Advertised = () => {
                         </a>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"
                                 src="https://images.unsplash.com/photo-1570865116909-d358c47f1806?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y3ljbGV8ZW58MHx8MHx8&w=1000&q=80"
@@ -70,7 +70,7 @@ const Advertised = () => {
                         </a>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"
                                 src="https://static.dezeen.com/uploads/2022/07/benjamin-hubert-layer-pendler-ebike-concept-design_dezeen_2364_sq-411x411.jpg"
@@ -87,7 +87,7 @@ const Advertised = () => {
                         </a>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end ">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"
                                 src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmljeWNsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
@@ -105,7 +105,7 @@ const Advertised = () => {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end ">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"
                                 src="https://i.guim.co.uk/img/media/ca216418ac3b9e8506aeffc16a557cc7798d4679/0_561_3750_2249/master/3750.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=4b9dfb06c141a84970a6863e27a97117"
@@ -123,7 +123,7 @@ const Advertised = () => {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <a href="#" className="group relative flex h-96 w-96 mx-auto items-end ">
+                        <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"
                                 src="https://images.unsplash.com/photo-1605008585816-03ab23ce80af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
