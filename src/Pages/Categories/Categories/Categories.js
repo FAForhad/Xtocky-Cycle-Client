@@ -27,7 +27,9 @@ const Categories = () => {
                     <div
                         className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch"
                     >
-                        <div className="flex items-center rounded bg-gray-100 p-8">
+                        <div className="flex items-center rounded bg-gray-100 p-8" data-aos="fade-left"
+                            data-aos-offset="500"
+                            data-aos-duration="500">
                             <div className="mx-auto text-center lg:text-left">
                                 <h2 className="text-2xl font-bold">CATEGORIES</h2>
 
@@ -39,7 +41,8 @@ const Categories = () => {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-3 lg:py-12">
+                        <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-3 lg:py-12"
+                        >
 
                             {
                                 allCategories?.map(categorie => <HomeCategory key={categorie._id} categorie={categorie}></HomeCategory>)

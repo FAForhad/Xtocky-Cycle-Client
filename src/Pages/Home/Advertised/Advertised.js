@@ -55,7 +55,12 @@ const Advertised = () => {
                             </div>
                         </a>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide
+                        data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500"
+                        data-aos-delay="50">
                         <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"
@@ -72,7 +77,11 @@ const Advertised = () => {
                             </div>
                         </a>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500"
+                        data-aos-delay="100">
                         <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"
@@ -89,7 +98,11 @@ const Advertised = () => {
                             </div>
                         </a>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500"
+                        data-aos-delay="150">
                         <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"
@@ -107,7 +120,11 @@ const Advertised = () => {
                         </a>
                     </SwiperSlide>
 
-                    <SwiperSlide>
+                    <SwiperSlide data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500"
+                        data-aos-delay="200">
                         <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"
@@ -125,7 +142,11 @@ const Advertised = () => {
                         </a>
                     </SwiperSlide>
 
-                    <SwiperSlide>
+                    <SwiperSlide data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500"
+                        data-aos-delay="250">
                         <a className="group relative flex h-96 w-96 mx-auto items-end ">
                             <img
                                 alt="Bike"

@@ -5,7 +5,9 @@ const HomeCategory = ({ categorie }) => {
     const { _id, picture, category, about } = categorie
 
     return (
-        <div>
+        <div data-aos="zoom-in-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="500">
             <Link to={`/signleCategory/${_id}`} className="block">
                 <img
                     alt="Simple Watch"
