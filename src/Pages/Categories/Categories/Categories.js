@@ -27,10 +27,8 @@ const Categories = () => {
                     <div
                         className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch"
                     >
-                        <div className="flex items-center rounded bg-gray-100 p-8" data-aos="fade-left"
-                            data-aos-offset="500"
-                            data-aos-duration="500">
-                            <div className="mx-auto text-center lg:text-left">
+                        <div className="flex items-center rounded bg-gray-100 p-8" >
+                            <div className="mx-auto text-center lg:text-left" data-aos="flip-right" data-aos-duration="1000">
                                 <h2 className="text-2xl font-bold">CATEGORIES</h2>
 
                                 <p className="mt-4 max-w-[45ch] text-sm text-gray-700">
