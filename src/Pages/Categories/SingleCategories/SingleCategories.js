@@ -25,7 +25,10 @@ const SingleCategories = () => {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
-                <div className="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">
+                <div className="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row" data-aos="fade-left"
+                    data-aos-anchor="#example-anchor"
+                    data-aos-offset="500"
+                    data-aos-duration="500">
                     <div className="flex justify-center xl:w-1/2">
                         <img className="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full" src={picture} alt="" />
                     </div>

@@ -35,7 +35,10 @@ const Advertised = () => {
                         className="parallax-bg "
                         data-swiper-parallax="-15%"
                     ></div>
-                    <SwiperSlide>
+                    <SwiperSlide data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500">
                         <a className="group relative flex h-96 w-96 mx-auto items-end">
                             <img
                                 alt="Bike"

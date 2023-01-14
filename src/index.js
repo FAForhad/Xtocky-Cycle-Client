@@ -9,7 +9,10 @@ import UserContext from './UserContext/UserContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import 'react-day-picker/dist/style.css';
 
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 
